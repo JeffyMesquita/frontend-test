@@ -5,19 +5,21 @@ import { WeatherCard } from "@components/WeatherCard/WeatherCard";
 import { WeatherMainInfo } from "@components/WeatherMainInfo/WeatherMainInfo";
 
 import { Coords, List, Weather, WeatherData } from "@@types/weather";
+import { Loader } from "@components/Loader/Loader";
 import { MicroWeatherCard } from "@components/MicroWeatherCard/MicroWeatherCard";
+import { WeatherHeaderInfo } from "@components/WeatherHeaderInfo/WeatherHeaderInfo";
 import {
   filterAllTodayWeatherInfo,
   formatDateToMonthDay,
   formatTimeBrazilian,
 } from "@utils/datesFormatter";
-import { CalendarDays, CloudFog, Droplets, MapPin, Wind } from "lucide-react";
+import { CalendarDays, CloudFog, Droplets, Wind } from "lucide-react";
 
 const openWeatherToken = process.env.NEXT_PUBLIC_OPEN_WEATHER_API_KEY;
 const mapBoxToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
 export default function WeatherPage() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [position, setPosition] = useState({} as Coords);
   const [weather, setWeather] = useState({} as WeatherData);
   const [activeWeather, setActiveWeather] = useState({} as List);
@@ -59,8 +61,6 @@ export default function WeatherPage() {
     const { latitude, longitude } = positions;
     const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${openWeatherToken}&units=metric&lang=pt_br`;
 
-    setIsLoading(true);
-
     await fetch(url)
       .then((response) => response.json())
       .then((data: WeatherData) => {
@@ -100,19 +100,16 @@ export default function WeatherPage() {
 
   return (
     <section className="flex flex-col gap-5 w-full px-5">
-      <header className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <MapPin />
-          <h1 className="text-xl font-bold">
-            {weather?.city?.name}, {weather.city?.country}
-          </h1>
-        </div>
-        <div>
-          <p className="text-md font-bold mr-4">{currentHour}</p>
-        </div>
-      </header>
+      <WeatherHeaderInfo
+        cityName={weather.city?.name}
+        country={weather.city?.country}
+        currentHour={currentHour}
+        isLoading={isLoading}
+      />
       {isLoading ? (
-        <p>Loading...</p>
+        <div className="relative h-[340px] w-full">
+          <Loader />
+        </div>
       ) : (
         <WeatherMainInfo
           temp={activeWeather.main?.temp}
