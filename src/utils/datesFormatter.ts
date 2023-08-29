@@ -16,6 +16,8 @@ function adjustDateTimeBrazilian(date: Date): string {
 }
 
 function formatDateToMonthDay(date: Date): string {
+  if (!date) return "Jan, 01";
+
   const adjustDay = adjustDateTimeBrazilian(date);
 
   const { 1: month, 0: day } = adjustDay.split("-");
@@ -30,6 +32,8 @@ function formatDateToMonthDay(date: Date): string {
 }
 
 function formatTimeBrazilian(date: Date): string {
+  if (!date) return "12:00";
+
   const time = new Date(date);
   time.setHours(time.getHours() - 3);
   return time.toLocaleTimeString("pt-BR", {
@@ -48,8 +52,6 @@ function filterAllTodayWeatherInfo(array: List[]) {
     const itemDate = adjustDateTimeBrazilian(item.dt_txt);
     return itemDate === todayDate;
   });
-
-  console.log(filteredArray);
 
   return filteredArray;
 }

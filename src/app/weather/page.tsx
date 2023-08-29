@@ -6,12 +6,12 @@ import { WeatherMainInfo } from "@components/WeatherMainInfo/WeatherMainInfo";
 
 import { Coords, List, Weather, WeatherData } from "@@types/weather";
 import { Loader } from "@components/Loader/Loader";
+import { LoaderSun } from "@components/LoaderSun/LoaderSun";
 import { MicroWeatherCard } from "@components/MicroWeatherCard/MicroWeatherCard";
 import { WeatherHeaderInfo } from "@components/WeatherHeaderInfo/WeatherHeaderInfo";
 import {
   filterAllTodayWeatherInfo,
   formatDateToMonthDay,
-  formatTimeBrazilian,
 } from "@utils/datesFormatter";
 import { CalendarDays, CloudFog, Droplets, Wind } from "lucide-react";
 
@@ -64,7 +64,6 @@ export default function WeatherPage() {
     await fetch(url)
       .then((response) => response.json())
       .then((data: WeatherData) => {
-        console.log(data);
         if (!data) return;
         setWeather(data);
 
@@ -81,8 +80,6 @@ export default function WeatherPage() {
         setIsLoading(false);
       });
   }, []);
-
-  const currentHour = formatTimeBrazilian(activeWeather.dt_txt);
 
   const today = formatDateToMonthDay(activeWeather.dt_txt);
 
@@ -103,12 +100,10 @@ export default function WeatherPage() {
       <WeatherHeaderInfo
         cityName={weather.city?.name}
         country={weather.city?.country}
-        currentHour={currentHour}
+        currentHour={activeWeather.dt_txt}
       />
       {isLoading ? (
-        <div className="relative h-[340px] w-full">
-          <Loader />
-        </div>
+        <Loader />
       ) : (
         <WeatherMainInfo
           temp={activeWeather.main?.temp}
@@ -136,18 +131,22 @@ export default function WeatherPage() {
       <WeatherCard className="flex-col gap-4">
         <header className="flex w-full justify-between font-extrabold">
           <h2>Hoje</h2>
-          <h3>{today}</h3>
+          <h3>{today ?? "data de hoje"}</h3>
         </header>
-        <article className="flex gap-4 justify-between">
-          {allTodayWeather?.map((weather) => (
-            <MicroWeatherCard
-              key={weather.dt}
-              temp={weather.main?.temp}
-              icon={weather.weather[0]?.icon}
-              hour={weather.dt_txt}
-            />
-          ))}
-        </article>
+        {isLoading ? (
+          <LoaderSun />
+        ) : (
+          <article className="flex gap-4 justify-between">
+            {allTodayWeather?.map((weather) => (
+              <MicroWeatherCard
+                key={weather.dt}
+                temp={weather.main?.temp}
+                icon={weather.weather[0]?.icon}
+                hour={weather.dt_txt}
+              />
+            ))}
+          </article>
+        )}
       </WeatherCard>
 
       <WeatherCard>

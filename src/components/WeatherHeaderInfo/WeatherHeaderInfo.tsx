@@ -5,7 +5,7 @@ import { MapPin } from "lucide-react";
 interface WeatherHeaderInfoProps {
   cityName: string;
   country: string;
-  currentHour: string;
+  currentHour: Date;
 }
 
 export function WeatherHeaderInfo({
