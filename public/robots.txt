@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://frontend-test.jeffymesquita.dev
+
+# Sitemaps
+Sitemap: https://frontend-test.jeffymesquita.dev/sitemap.xml
+Sitemap: https://frontend-test.jeffymesquita.dev.xml
