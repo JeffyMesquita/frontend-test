@@ -104,7 +104,6 @@ export default function WeatherPage() {
         cityName={weather.city?.name}
         country={weather.city?.country}
         currentHour={currentHour}
-        isLoading={isLoading}
       />
       {isLoading ? (
         <div className="relative h-[340px] w-full">
