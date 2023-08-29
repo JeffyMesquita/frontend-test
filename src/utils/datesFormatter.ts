@@ -39,10 +39,12 @@ function formatTimeBrazilian(date: Date): string {
 }
 
 function filterAllTodayWeatherInfo(array: List[]) {
+  if (!array) return null;
+
   const today = new Date();
   const todayDate = adjustDateTimeBrazilian(today);
 
-  const filteredArray = array.filter((item) => {
+  const filteredArray = array?.filter((item) => {
     const itemDate = adjustDateTimeBrazilian(item.dt_txt);
     return itemDate === todayDate;
   });
