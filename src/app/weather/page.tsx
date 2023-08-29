@@ -128,33 +128,35 @@ export default function WeatherPage() {
         </div>
       </WeatherCard>
 
-      <WeatherCard className="flex-col gap-4">
-        <header className="flex w-full justify-between font-extrabold">
-          <h2>Hoje</h2>
-          <h3>{today ?? "data de hoje"}</h3>
-        </header>
-        {isLoading ? (
-          <LoaderSun />
-        ) : (
-          <article className="flex gap-4 justify-between">
-            {allTodayWeather?.map((weather) => (
-              <MicroWeatherCard
-                key={weather.dt}
-                temp={weather.main?.temp}
-                icon={weather.weather[0]?.icon}
-                hour={weather.dt_txt}
-              />
-            ))}
-          </article>
-        )}
-      </WeatherCard>
+      <div className="flex flex-col gap-5 sm:flex-row">
+        <WeatherCard className="flex-col gap-4 ">
+          <header className="flex w-full justify-between font-extrabold">
+            <h2>Hoje</h2>
+            <h3>{today ?? "data de hoje"}</h3>
+          </header>
+          {isLoading ? (
+            <LoaderSun />
+          ) : (
+            <article className="flex gap-4 justify-between">
+              {allTodayWeather?.map((weather) => (
+                <MicroWeatherCard
+                  key={weather.dt}
+                  temp={weather.main?.temp}
+                  icon={weather.weather[0]?.icon}
+                  hour={weather.dt_txt}
+                />
+              ))}
+            </article>
+          )}
+        </WeatherCard>
 
-      <WeatherCard>
-        <header className="flex w-full justify-between font-extrabold">
-          <h2>Próximas Previsões</h2>
-          <CalendarDays size={22} />
-        </header>
-      </WeatherCard>
+        <WeatherCard>
+          <header className="flex w-full justify-between font-extrabold">
+            <h2>Próximas Previsões</h2>
+            <CalendarDays size={22} />
+          </header>
+        </WeatherCard>
+      </div>
     </section>
   );
 }
