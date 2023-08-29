@@ -13,12 +13,27 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://frontend-test.jeffymesquita.dev/weather"),
+  metadataBase: new URL("https://frontend-test.jeffymesquita.dev"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    images: "/og-image.png",
+    images: [
+      {
+        url: "https://frontend-test.jeffymesquita.dev/weather/opengraph-image.png",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    images: [
+      {
+        url: "https://frontend-test.jeffymesquita.dev/weather/twitter-image.png",
+      },
+    ],
+    card: "summary_large_image",
+    site: "https://jeffymesquita.dev",
+    creator: "@_jeferson___",
   },
   title: {
     default: "FrontEnd Test",
