@@ -29,5 +29,8 @@
     "tailwindcss": "3.3.3",
     "tailwindcss-animate": "^1.0.6",
     "typescript": "5.2.2"
+  },
+  "devDependencies": {
+    "@builder.io/partytown": "^0.8.0"
   }
 }
