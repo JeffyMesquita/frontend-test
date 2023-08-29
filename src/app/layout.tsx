@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://frontend-test.jeffymesquita.dev/weather/opengraph-image.png",
+        alt: "FrontEnd Test - Weather App",
       },
     ],
     type: "website",
@@ -29,6 +30,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://frontend-test.jeffymesquita.dev/weather/twitter-image.png",
+        alt: "FrontEnd Test - Weather App",
       },
     ],
     card: "summary_large_image",
