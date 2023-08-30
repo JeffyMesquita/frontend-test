@@ -7,6 +7,8 @@ interface WeatherOtherDaysProps {
 }
 
 export function WeatherOtherDays({ list }: WeatherOtherDaysProps) {
+  console.log(list);
+
   return (
     <div className="flex flex-col w-full gap-3 pb-1">
       {list &&

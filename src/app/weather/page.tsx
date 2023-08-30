@@ -95,6 +95,8 @@ export default function WeatherPage() {
 
   const nextDays = nextDaysForecast(weather.list);
 
+  console.log(nextTimesWeather);
+
   useEffect(() => {
     getLocation();
   }, [getLocation]);
