@@ -6,6 +6,7 @@ import { WeatherMainInfo } from "@components/WeatherMainInfo/WeatherMainInfo";
 
 import { Coords, List, Weather, WeatherData } from "@@types/weather";
 import { Loader } from "@components/Loader/Loader";
+import { LoaderCloud } from "@components/LoaderCloud/LoaderCloud";
 import { LoaderSun } from "@components/LoaderSun/LoaderSun";
 import { MicroWeatherCard } from "@components/MicroWeatherCard/MicroWeatherCard";
 import { WeatherHeaderInfo } from "@components/WeatherHeaderInfo/WeatherHeaderInfo";
@@ -165,7 +166,7 @@ export default function WeatherPage() {
             <CalendarDays size={22} />
           </header>
           {isLoading && !nextDays ? (
-            <LoaderSun />
+            <LoaderCloud />
           ) : (
             <WeatherOtherDays list={nextDays} />
           )}
