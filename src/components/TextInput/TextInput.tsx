@@ -42,7 +42,9 @@ function TextInputLabel({
 }: TextInputLabelProps) {
   return (
     <label className={cn("w-full", className)}>
-      <Text size="sm">{description}</Text>
+      <Text size="sm" className="font-bold mb-1">
+        {description}
+      </Text>
       {children}
     </label>
   );
@@ -53,14 +55,18 @@ function TextInputError({ isInvalid, description }: TextInputErrorsProps) {
     return null;
   }
 
-  return <span className="ml-0.5 text-2xs text-red-500">{description}</span>;
+  return (
+    <span className="ml-0.5 text-2xs font-bold text-red-600">
+      {description}
+    </span>
+  );
 }
 
 function TextInputContent({ className, children }: TextInputContentProps) {
   return (
     <div
       className={cn(
-        "input-theme flex h-12 w-full items-center gap-3 rounded-md px-4 duration-200 focus-within:ring-2 hover:ring-2",
+        "input-theme flex h-10 w-full items-center gap-4 rounded-sm px-4 duration-200 focus-within:ring-2 hover:ring-2 -mb-1.5",
         className
       )}
     >
@@ -80,7 +86,7 @@ const TextInputIcon = forwardRef<HTMLDivElement, TextInputIconProps>(
     return (
       <span
         {...props}
-        className="flex items-center justify-center text-gray-400"
+        className="flex items-center justify-center text-neutral-400"
         ref={innerRef}
       >
         {props.children}

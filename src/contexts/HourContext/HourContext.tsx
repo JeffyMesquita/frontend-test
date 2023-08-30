@@ -19,7 +19,7 @@ interface HourProviderProps {
 }
 
 const HourProvider = ({ children }: HourProviderProps) => {
-  const [isDay, setIsDay] = useState(false);
+  const [isDay, setIsDay] = useState(true);
 
   const getHour = useCallback(() => {
     const now = new Date();

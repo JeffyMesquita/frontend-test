@@ -58,7 +58,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} text-neutral-50 scrollbar-hide`}>
+      <body
+        className={`${montserrat.variable} text-neutral-50 scrollbar-hide w-full h-full`}
+      >
         <NextTopLoader
           color="#91DEFF"
           initialPosition={0.08}

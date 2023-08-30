@@ -16,6 +16,13 @@ module.exports = {
       },
     },
     extend: {
+      fontSize: {
+        "2xs": "0.625rem",
+      },
+      screens: {
+        xs: "480px",
+        "2xs": "360px",
+      },
       colors: {
         "blue-day": {
           300: "#2DC8EA",

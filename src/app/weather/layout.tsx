@@ -12,7 +12,7 @@ export default function WeatherLayout({ children }: PropsWithChildren) {
   return (
     <WeatherBody>
       <NavBar />
-      <section className="flex flex-col items-center justify-center w-full h-full mt-8">
+      <section className="flex flex-col items-center justify-center w-full h-full max-w-5xl mx-auto">
         {children}
       </section>
     </WeatherBody>

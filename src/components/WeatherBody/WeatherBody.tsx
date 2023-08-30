@@ -12,9 +12,10 @@ export function WeatherBody({ children, className }: WeatherBodyProps) {
   return (
     <main
       className={cn(
-        "flex min-h-screen flex-col items-center p-4 bg-day",
+        "flex min-h-screen flex-col items-center p-4 pt-0 gap-4",
         {
           "bg-night": !isDay,
+          "bg-day": isDay,
         },
         className
       )}
