@@ -13,3 +13,19 @@ export const headingTextAnimation = {
     },
   },
 };
+
+export const infoCardAnimation = {
+  hidden: {
+    opacity: 0,
+    x: -10,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.8,
+      delayChildren: 1,
+      staggerChildren: 0.9,
+    },
+  },
+};
