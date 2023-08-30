@@ -91,11 +91,9 @@ export default function WeatherPage() {
 
   const nextTimesWeather = completeFourAtLeastWeatherInfo(weather.list);
 
-  const visibleDays = !allTodayWeather ? "Hoje" : "Amanhã";
+  const visibleDays = allTodayWeather!.length === 0 ? "Amanhã" : "Hoje";
 
   const nextDays = nextDaysForecast(weather.list);
-
-  console.log(nextTimesWeather);
 
   useEffect(() => {
     getLocation();
