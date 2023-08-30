@@ -56,7 +56,7 @@ function filterAllTodayWeatherInfo(array: List[]) {
   return filteredArray;
 }
 
-function filterFirstFourTomorrowWeatherInfo(array: List[]) {
+function filterAllTomorrowWeatherInfo(array: List[]) {
   if (!array) return null;
 
   const tomorrow = new Date();
@@ -68,14 +68,39 @@ function filterFirstFourTomorrowWeatherInfo(array: List[]) {
     return itemDate === tomorrowDate;
   });
 
-  const firstFour = filteredArray?.slice(0, 4);
+  return filteredArray;
+}
 
-  return firstFour;
+function completeFourAtLeastWeatherInfo(array: List[]) {
+  if (!array) return null;
+
+  const todayArray = filterAllTodayWeatherInfo(array);
+  const tomorrowArray = filterAllTomorrowWeatherInfo(array);
+
+  const todayArrayLength = todayArray?.length;
+  const tomorrowArrayLength = tomorrowArray?.length;
+
+  if (todayArrayLength && todayArrayLength >= 4) {
+    return todayArray.slice(0, 4);
+  }
+
+  if (todayArrayLength && todayArrayLength < 4) {
+    const remaining = 4 - todayArrayLength;
+    const tomorrowArraySliced = tomorrowArray?.slice(0, remaining);
+
+    if (tomorrowArraySliced) return [...todayArray, ...tomorrowArraySliced];
+  }
+
+  if (tomorrowArrayLength && tomorrowArrayLength >= 4) {
+    return tomorrowArray.slice(0, 4);
+  }
+
+  return null;
 }
 
 export {
+  completeFourAtLeastWeatherInfo,
   filterAllTodayWeatherInfo,
-  filterFirstFourTomorrowWeatherInfo,
   formatDateToMonthDay,
   formatTimeBrazilian,
 };

@@ -10,8 +10,8 @@ import { LoaderSun } from "@components/LoaderSun/LoaderSun";
 import { MicroWeatherCard } from "@components/MicroWeatherCard/MicroWeatherCard";
 import { WeatherHeaderInfo } from "@components/WeatherHeaderInfo/WeatherHeaderInfo";
 import {
+  completeFourAtLeastWeatherInfo,
   filterAllTodayWeatherInfo,
-  filterFirstFourTomorrowWeatherInfo,
   formatDateToMonthDay,
 } from "@utils/datesFormatter";
 import { CalendarDays, CloudFog, Droplets, Wind } from "lucide-react";
@@ -85,11 +85,8 @@ export default function WeatherPage() {
   const today = formatDateToMonthDay(activeWeather.dt_txt);
 
   const allTodayWeather = filterAllTodayWeatherInfo(weather.list);
-  const allTomorrowWeather = filterFirstFourTomorrowWeatherInfo(weather.list);
 
-  const nextTimesWeather = !allTodayWeather
-    ? allTodayWeather
-    : allTomorrowWeather;
+  const nextTimesWeather = completeFourAtLeastWeatherInfo(weather.list);
 
   const visibleDays = !allTodayWeather ? "Hoje" : "Amanhã";
 
