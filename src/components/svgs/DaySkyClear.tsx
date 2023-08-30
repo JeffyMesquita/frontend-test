@@ -3,74 +3,37 @@ export function DaySkyClear() {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
-      viewBox="0 0 318 318"
+      viewBox="0 0 246 258"
       className="w-full h-full"
       // {...props}
     >
-      <rect
-        width={250}
-        height={250}
-        x={0.931}
-        y={0.931}
-        fill="transparent"
-        rx={94.665}
-      />
-      <g filter="url(#a)">
+      <g filter="transparent">
         <path
-          fill="transparent"
-          d="M231.542 282.134c0 2.571-32.517 4.655-72.628 4.655-40.112 0-72.629-2.084-72.629-4.655s32.517-4.656 72.629-4.656c40.111 0 72.628 2.085 72.628 4.656Z"
+          fill="#FA9E42"
+          d="M124.446 253.754c64.578 0 116.928-52.616 116.928-117.521s-52.35-117.52-116.928-117.52S7.518 71.327 7.518 136.232s52.35 117.521 116.928 117.521Z"
         />
+        <g filter="url(#a)">
+          <path
+            fill="#F8E36F"
+            d="M115.997 119.521c38.861-20.641 60.597-55.763 48.548-78.447-12.049-22.685-53.319-24.341-92.18-3.7-38.862 20.64-60.598 55.763-48.549 78.447 12.049 22.684 53.32 24.341 92.181 3.7Z"
+          />
+        </g>
       </g>
-      <path
-        fill="url(#b)"
-        d="M228.19 159.1c0 38.157-30.933 69.09-69.09 69.09-38.157 0-69.09-30.933-69.09-69.09 0-38.158 30.933-69.09 69.09-69.09 38.157 0 69.09 30.932 69.09 69.09Z"
-      />
-      <rect
-        width={315.965}
-        height={315.965}
-        x={0.931}
-        y={0.931}
-        stroke="url(#c)"
-        strokeWidth={1.862}
-        rx={94.665}
-      />
       <defs>
-        <linearGradient
-          id="b"
-          x1={186.932}
-          x2={128.723}
-          y1={96.406}
-          y2={228.175}
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stopColor="#FFD88B" />
-          <stop offset={1} stopColor="#FFA900" />
-        </linearGradient>
-        <linearGradient
-          id="c"
-          x1={30.467}
-          x2={312.025}
-          y1={38.872}
-          y2={312.025}
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stopColor="transparent" />
-          <stop offset={1} stopColor="transparent" stopOpacity={0} />
-        </linearGradient>
         <filter
           id="a"
-          width={175.053}
-          height={39.108}
-          x={71.387}
-          y={262.58}
+          width={187.377}
+          height={151.065}
+          x={0.492}
+          y={2.915}
           colorInterpolationFilters="sRGB"
           filterUnits="userSpaceOnUse"
         >
           <feFlood floodOpacity={0} result="BackgroundImageFix" />
           <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
           <feGaussianBlur
-            result="effect1_foregroundBlur_101_15"
-            stdDeviation={7.449}
+            result="effect1_foregroundBlur_7_8695"
+            stdDeviation={10}
           />
         </filter>
       </defs>

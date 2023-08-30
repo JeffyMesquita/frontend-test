@@ -7,7 +7,6 @@ import { DayShowerRain } from "@components/svgs/DayShowerRain";
 import { DaySkyClear } from "@components/svgs/DaySkyClear";
 import { Fog } from "@components/svgs/Fog";
 import { HardRain } from "@components/svgs/HardRain";
-import { NightBrokenCloudy } from "@components/svgs/NightBrokenCloudy";
 import { NightCloudy } from "@components/svgs/NightCloudy";
 import { NightSkyClear } from "@components/svgs/NightSkyClear";
 import { ScatteredClouds } from "@components/svgs/ScatteredClouds";
@@ -50,7 +49,7 @@ const icons = [
   },
   {
     id: "04n",
-    icon: <NightBrokenCloudy />,
+    icon: <DayBrokenCloudy />,
   },
   {
     id: "09d",

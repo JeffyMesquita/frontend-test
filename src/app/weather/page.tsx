@@ -11,6 +11,7 @@ import { MicroWeatherCard } from "@components/MicroWeatherCard/MicroWeatherCard"
 import { WeatherHeaderInfo } from "@components/WeatherHeaderInfo/WeatherHeaderInfo";
 import {
   filterAllTodayWeatherInfo,
+  filterFirstFourTomorrowWeatherInfo,
   formatDateToMonthDay,
 } from "@utils/datesFormatter";
 import { CalendarDays, CloudFog, Droplets, Wind } from "lucide-react";
@@ -84,6 +85,13 @@ export default function WeatherPage() {
   const today = formatDateToMonthDay(activeWeather.dt_txt);
 
   const allTodayWeather = filterAllTodayWeatherInfo(weather.list);
+  const allTomorrowWeather = filterFirstFourTomorrowWeatherInfo(weather.list);
+
+  const nextTimesWeather = !allTodayWeather
+    ? allTodayWeather
+    : allTomorrowWeather;
+
+  const visibleDays = !allTodayWeather ? "Hoje" : "Amanhã";
 
   useEffect(() => {
     getLocation();
@@ -131,14 +139,14 @@ export default function WeatherPage() {
       <div className="flex flex-col gap-5 sm:flex-row">
         <WeatherCard className="flex-col gap-4 ">
           <header className="flex w-full justify-between font-extrabold">
-            <h2>Hoje</h2>
+            <h2>{visibleDays}</h2>
             <h3>{today ?? "data de hoje"}</h3>
           </header>
           {isLoading ? (
             <LoaderSun />
           ) : (
             <article className="flex gap-4 justify-between">
-              {allTodayWeather?.map((weather) => (
+              {nextTimesWeather?.map((weather) => (
                 <MicroWeatherCard
                   key={weather.dt}
                   temp={weather.main?.temp}

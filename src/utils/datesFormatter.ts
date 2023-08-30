@@ -56,4 +56,26 @@ function filterAllTodayWeatherInfo(array: List[]) {
   return filteredArray;
 }
 
-export { filterAllTodayWeatherInfo, formatDateToMonthDay, formatTimeBrazilian };
+function filterFirstFourTomorrowWeatherInfo(array: List[]) {
+  if (!array) return null;
+
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const tomorrowDate = adjustDateTimeBrazilian(tomorrow);
+
+  const filteredArray = array?.filter((item) => {
+    const itemDate = adjustDateTimeBrazilian(item.dt_txt);
+    return itemDate === tomorrowDate;
+  });
+
+  const firstFour = filteredArray?.slice(0, 4);
+
+  return firstFour;
+}
+
+export {
+  filterAllTodayWeatherInfo,
+  filterFirstFourTomorrowWeatherInfo,
+  formatDateToMonthDay,
+  formatTimeBrazilian,
+};
