@@ -83,6 +83,31 @@
   @apply bg-gradient-to-tr from-blue-night-500 via-blue-night-400 to-blue-night-300;
 }
 
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide:hover::-webkit-scrollbar-thumb:vertical {
+  @apply bg-blue-300;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  @apply h-1.5 w-1.5 rounded-xl bg-transparent;
+}
+
+.scrollbar-hide::-webkit-scrollbar-thumb:vertical {
+  @apply h-[1px] w-[1px] rounded-xl bg-transparent;
+}
+
+.scrollbar-hide:hover::-webkit-scrollbar-thumb:horizontal {
+  @apply bg-blue-300;
+}
+
+.scrollbar-hide::-webkit-scrollbar-thumb:horizontal {
+  @apply h-[1px] w-[1px] rounded-xl bg-transparent;
+}
+
 /* Other Css */
 .loader-inner {
   width: 100px;

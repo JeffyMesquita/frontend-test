@@ -15,6 +15,13 @@ function adjustDateTimeBrazilian(date: Date): string {
   return newTime;
 }
 
+function adjustDateTimeBrazilianUTC(date: Date): Date {
+  const time = new Date(date);
+  time.setHours(time.getHours());
+
+  return time;
+}
+
 function formatDateToMonthDay(date: Date): string {
   if (!date) return "Jan, 01";
 
@@ -98,9 +105,41 @@ function completeFourAtLeastWeatherInfo(array: List[]) {
   return null;
 }
 
+function nextDaysForecast(array: List[]) {
+  if (!array) return null;
+
+  const nextDays = array?.filter((item) => {
+    const itemDate = adjustDateTimeBrazilianUTC(item.dt_txt);
+    const today = adjustDateTimeBrazilianUTC(new Date());
+
+    if (itemDate > today) {
+      return item;
+    }
+  });
+
+  const onlyMidDay = nextDays?.filter((item) => {
+    const itemTime = formatTimeBrazilian(item.dt_txt);
+    return itemTime === "12:00";
+  });
+
+  return onlyMidDay;
+}
+
+function formatDayOfWeekName(date: Date): string {
+  if (!date) return "Monday";
+
+  const dayOfWeek = new Date(date).toLocaleDateString("pt-Br", {
+    weekday: "long",
+  });
+
+  return dayOfWeek;
+}
+
 export {
   completeFourAtLeastWeatherInfo,
   filterAllTodayWeatherInfo,
   formatDateToMonthDay,
+  formatDayOfWeekName,
   formatTimeBrazilian,
+  nextDaysForecast,
 };

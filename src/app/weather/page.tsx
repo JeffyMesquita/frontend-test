@@ -9,10 +9,12 @@ import { Loader } from "@components/Loader/Loader";
 import { LoaderSun } from "@components/LoaderSun/LoaderSun";
 import { MicroWeatherCard } from "@components/MicroWeatherCard/MicroWeatherCard";
 import { WeatherHeaderInfo } from "@components/WeatherHeaderInfo/WeatherHeaderInfo";
+import { WeatherOtherDays } from "@components/WeatherOtherDays/WeatherOtherDays";
 import {
   completeFourAtLeastWeatherInfo,
   filterAllTodayWeatherInfo,
   formatDateToMonthDay,
+  nextDaysForecast,
 } from "@utils/datesFormatter";
 import { CalendarDays, CloudFog, Droplets, Wind } from "lucide-react";
 
@@ -90,6 +92,8 @@ export default function WeatherPage() {
 
   const visibleDays = !allTodayWeather ? "Hoje" : "Amanhã";
 
+  const nextDays = nextDaysForecast(weather.list);
+
   useEffect(() => {
     getLocation();
   }, [getLocation]);
@@ -155,11 +159,16 @@ export default function WeatherPage() {
           )}
         </WeatherCard>
 
-        <WeatherCard>
+        <WeatherCard className="flex flex-col gap-4">
           <header className="flex w-full justify-between font-extrabold">
             <h2>Próximas Previsões</h2>
             <CalendarDays size={22} />
           </header>
+          {isLoading && !nextDays ? (
+            <LoaderSun />
+          ) : (
+            <WeatherOtherDays list={nextDays} />
+          )}
         </WeatherCard>
       </div>
     </section>
