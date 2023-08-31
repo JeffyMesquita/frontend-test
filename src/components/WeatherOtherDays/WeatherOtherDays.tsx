@@ -1,6 +1,8 @@
 import { List } from "@@types/weather";
 import { WeatherIcon } from "@components/WeatherIcon/WeatherIcon";
+import { iconAnimation } from "@styles/animations/animations";
 import { formatDayOfWeekName } from "@utils/datesFormatter";
+import { motion } from "framer-motion";
 
 interface WeatherOtherDaysProps {
   list: List[] | null;
@@ -15,9 +17,14 @@ export function WeatherOtherDays({ list }: WeatherOtherDaysProps) {
             <p className="capitalize text-[10px] font-semibold w-[60px] truncate">
               {formatDayOfWeekName(item.dt_txt)}
             </p>
-            <div className="w-5 h-5">
+            <motion.div
+              className="w-5 h-5"
+              initial="hidden"
+              animate="visible"
+              variants={iconAnimation}
+            >
               <WeatherIcon icon={item.weather[0]?.icon} />
-            </div>
+            </motion.div>
             <div className="flex gap-2 w-[55px] truncate">
               <p className="text-[10px] font-semibold">
                 {item.main?.temp_max.toFixed(0)}°C

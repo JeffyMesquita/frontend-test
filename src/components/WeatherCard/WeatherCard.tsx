@@ -1,6 +1,8 @@
 "use client";
 import { useHourContext } from "@contexts/HourContext/HourContext";
 import { cn } from "@lib/utils";
+import { footerCardAnimation } from "@styles/animations/animations";
+import { motion } from "framer-motion";
 
 interface WeatherCardProps {
   children: React.ReactNode;
@@ -11,7 +13,7 @@ export function WeatherCard({ children, className }: WeatherCardProps) {
   const { isDay } = useHourContext();
 
   return (
-    <div
+    <motion.div
       className={cn(
         "flex p-4 w-full rounded-2xl",
         {
@@ -20,8 +22,11 @@ export function WeatherCard({ children, className }: WeatherCardProps) {
         },
         className
       )}
+      initial="hidden"
+      animate="visible"
+      variants={footerCardAnimation}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }

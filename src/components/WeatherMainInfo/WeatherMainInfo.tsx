@@ -1,4 +1,6 @@
 import { WeatherIcon } from "@components/WeatherIcon/WeatherIcon";
+import { iconAnimation } from "@styles/animations/animations";
+import { motion } from "framer-motion";
 
 interface WeatherMainInfoProps {
   temp: number;
@@ -17,9 +19,14 @@ export function WeatherMainInfo({
 }: WeatherMainInfoProps) {
   return (
     <div className="flex flex-col h-full w-full gap-2 items-center ">
-      <div className="h-44 w-64">
+      <motion.div
+        className="h-44 w-64"
+        initial="hidden"
+        animate="visible"
+        variants={iconAnimation}
+      >
         <WeatherIcon icon={icon} />
-      </div>
+      </motion.div>
 
       <h2 className="text-6xl font-bold text-center">{temp?.toFixed(0)}°</h2>
       <div className="flex flex-col w-full text-center">

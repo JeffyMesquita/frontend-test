@@ -29,3 +29,52 @@ export const infoCardAnimation = {
     },
   },
 };
+
+export const navbarAnimation = {
+  hidden: {
+    opacity: 0,
+    y: -20,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1,
+      delayChildren: 1,
+      staggerChildren: 0.7,
+    },
+  },
+};
+
+export const footerCardAnimation = {
+  hidden: {
+    opacity: 0.5,
+    y: 10,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1,
+      delayChildren: 1,
+      staggerChildren: 0.7,
+    },
+  },
+};
+
+export const iconAnimation = {
+  hidden: {
+    opacity: 0.1,
+    x: 25,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      ease: "easeIn",
+      duration: 0.5,
+      delayChildren: 1,
+      staggerChildren: 0.7,
+    },
+  },
+};
