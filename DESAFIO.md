@@ -13,6 +13,7 @@ Para começar, você deverá criar uma aplicação no NextJS contendo as seguint
 
 - O tratamento de dados do clima, pois a API retorna um objeto com muitas informações e eu tive que tratar para pegar apenas as informações que eu precisava.
 - a manipulação desses dados para exibir na tela também foi um pouco complicada, pois como não é um `BFF (Backend for Frontend)` tinha que fazer tudo no front-end.
+- A integração com as APIs de busca de `CEP` pelo nome da rua foi totalmente nova pra mim, então tive que pesquisar porém ainda sim tive dificuldades, pois a API que eu estava utilizando não estava funcionando muito bem, então tive que trocar de API e a que eu encontrei não tinha uma documentação muito boa, então essa parte do desafio acabou por ficar incompleta tentei inclusive entrar em contato com os responsáveis pelas APIs mas não tive retorno até então, todavia a tela está feita com dados mockados.
 
 • Descreva a funcionalidade e o por quê da utilização das bibliotecas escolhidas por você para concluir o desafio.
 
